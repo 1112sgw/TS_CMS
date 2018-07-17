@@ -64,7 +64,7 @@ class HttpRequest {
   }
   // 创建实例
   create () {
-    const baseURL = 'http://localhost:3000/'
+    const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:3001/' : '/'
     let conf = {
       baseURL: baseURL,
       // timeout: 2000,
