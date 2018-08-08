@@ -4,16 +4,16 @@ import { Base } from './base';
 @Entity()
 export class User extends Base {
 
-  @Column({ length: 50 })
+  @Column({ length: 50, nullable: true })
   wechatOpenId: string;
 
   @Column({ length: 50, nullable: false })
   userName: string;
 
-  @Column({ length: 50 })
+  @Column({ length: 50, nullable: true })
   nickName: string;
 
-  @Column({ length: 50, nullable: false })
+  @Column({ length: 250, nullable: false })
   password: string;
 
   @Column({ length: 50, nullable: false })
@@ -28,13 +28,13 @@ export class User extends Base {
   @Column('int')
   gender: number;
 
-  @Column()
+  @Column({nullable: true})
   avatar: string;
 
-  @Column('int')
+  @Column({nullable: true})
   birthday: number;
 
-  @Column({length: 20})
+  @Column({length: 20, nullable: true})
   mobile: string;
 
 }
