@@ -7,7 +7,7 @@ export class SessionSerializer extends PassportSerializer {
         done(null, user);
     }
     // tslint:disable-next-line:ban-types
-    deserializeUser(payload: any, done: Function): any {
-        done(null, payload);
+    deserializeUser(user: any, done: Function): any {
+        done(null, user);
     }
 }

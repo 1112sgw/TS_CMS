@@ -1,18 +1,16 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './services/user.service';
-import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { SessionSerializer } from './strategy/session.serializer';
-import { AuthController } from './controllers/auth.controller';
-import { UserController } from './controllers/user.controller';
-import { User } from './entities/user.entity';
+import { AuthController, UserController } from './controllers';
+import { User, Role } from './entities';
+import { UserService, RoleService, AuthService } from './services';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      schema: process.env.DATABASE_SCHEMA,
+      schema: process.env.DATABASE_SCHEMA_SYS,
       host: process.env.DATABASE_HOST,
       port: parseInt(process.env.DATABASE_PORT, 10),
       username: process.env.DATABASE_USERNAME,
@@ -21,9 +19,9 @@ import { User } from './entities/user.entity';
       entities: [__dirname + '/entities/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Role]),
   ],
   controllers: [UserController, AuthController],
-  providers: [UserService, AuthService, JwtStrategy, SessionSerializer],
+  providers: [UserService, AuthService, RoleService, JwtStrategy, SessionSerializer],
 })
 export class SysModule {}

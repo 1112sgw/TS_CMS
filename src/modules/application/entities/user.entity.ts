@@ -13,10 +13,10 @@ export class User extends Base {
   @Column({ length: 50 })
   nickName: string;
 
-  @Column({ length: 50, nullable: false })
+  @Column({ length: 50 })
   password: string;
 
-  @Column({ length: 50, nullable: false })
+  @Column({ length: 50 })
   email: string;
 
   @Column({ length: 50 })

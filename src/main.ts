@@ -27,7 +27,7 @@ async function bootstrap() {
       tableName: 'session',
       schemaName: process.env.DATABASE_SCHEMA,
     }),
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SERCET,
     resave: true,
     saveUninitialized: true,
     cookie: {

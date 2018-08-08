@@ -24,7 +24,7 @@ export class Base {
   @Column({ length: 100 })
   deletedBy: string;
 
-  @Column({default: false})
+  @Column()
   isDeleted: boolean;
 
 }
