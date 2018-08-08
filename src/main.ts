@@ -25,7 +25,7 @@ async function bootstrap() {
     store: new PGSession({
       conString: process.env.DATABASE_URL,
       tableName: 'session',
-      schemaName: process.env.DATABASE_SCHEMA,
+      schemaName: process.env.DATABASE_SCHEMA_SYS,
     }),
     secret: process.env.SESSION_SERCET,
     resave: true,

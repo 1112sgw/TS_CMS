@@ -1,25 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './services/user.service';
-import { UserController } from './controllers/user.controller';
-import { User } from './entities/user.entity';
+import { RegionService } from './services/region.service';
+import { RegionController } from './controllers/region.controller';
+import { Region } from './entities/region.entity';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      schema: process.env.DATABASE_SCHEMA_APP,
-      host: process.env.DATABASE_HOST,
-      port: parseInt(process.env.DATABASE_PORT, 10),
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
-      entities: [__dirname + '/entities/*.entity{.ts,.js}'],
-      synchronize: true,
-    }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([Region], process.env.DATABASE_SCHEMA_APP),
   ],
-  controllers: [UserController],
-  providers: [UserService],
+  controllers: [RegionController],
+  providers: [RegionService],
 })
 export class AppModule {}
