@@ -12,6 +12,8 @@ import * as passport from 'passport';
 import * as compression from 'compression';
 import { HttpExceptionFilter } from './modules/system/filters/http-exception.filter';
 import { MainModule } from './modules/main.module';
+import initWechat from './middleware/wechat';
+
 // tslint:disable-next-line:no-var-requires
 const PGSession = require('connect-pg-simple')(session);
 
@@ -41,6 +43,9 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
   app.use(passport.initialize());
   app.use(passport.session());
+
+  // 绑定微信
+  initWechat(app);
 
   if (process.env.NODE_ENV === 'development'){
     app.enableCors();
