@@ -2,7 +2,7 @@ import { Controller, Get, Post, Patch, Delete, Param, Req, Res, Body, HttpStatus
 import * as WechatAPI from 'wechat-api';
 import * as crypto from 'crypto';
 import * as wechat from 'wechat';
-const api = new WechatAPI(process.env.APPID, process.env.APPSERCRET);
+const api = new WechatAPI(process.env.WECHAT_APPID, process.env.WECHAT_APPSERCRET);
 
 @Controller('api/wechat')
 export class WechatController {
