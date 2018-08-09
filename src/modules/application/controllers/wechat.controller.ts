@@ -29,4 +29,20 @@ export class WechatController {
     res.writeHead(200);
     res.end(req.query.echostr);
   }
+
+  @Get('/sync')
+  syncFollowers(@Req() req, @Res() res) {
+    api.getFollowers((err, data, resp) => {
+      return res.json({
+        code: 200,
+        timestamp: new Date().toISOString(),
+        data: {
+          err,
+          data,
+          resp,
+        },
+      });
+    });
+  }
+
 }
