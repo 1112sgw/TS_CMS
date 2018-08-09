@@ -10,8 +10,8 @@ const initWechat = (app) => {
     app.use('/wechat', wechat(config, (req, res, next) => {
         // message is located in req.weixin
         const message = req.weixin;
-        console.log(req);
-        if (message.MsgType === 'device_text') {
+        console.log(message);
+        if (message.MsgType === 'text') {
             // device text
             res.reply('This message will be pushed onto the device.');
         }
