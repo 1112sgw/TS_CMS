@@ -4,8 +4,8 @@ const initWechat = (app) => {
     const config = {
         token: process.env.WECHAT_TOKEN,
         appid: process.env.WECHAT_APPID,
-        encodingAESKey: process.env.WECHAT_AESKEY,
-        checkSignature: process.env.WECHAT_SIGNATURE,
+        encodingAESKey: process.env.NODE_ENV === 'production' ? process.env.WECHAT_AESKEY : undefined,
+        checkSignature: process.env.NODE_ENV === 'production',
     };
     app.use('/wechat', wechat(config, (req, res, next) => {
         // message is located in req.weixin
