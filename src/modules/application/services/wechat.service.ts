@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, LessThan } from 'typeorm';
 import { Token } from '../entities/token.entity';
+import * as moment from 'moment';
 import * as WechatAPI from 'co-wechat-api';
 
 @Injectable()
@@ -29,8 +30,8 @@ export class WechatService {
         if (token && token.errcode && token.errcode === 0){
           await this.tokenRepository.insert({
             Token: token.ACCESS_TOKEN,
-            AccessTime: new Date(),
-            ExpireTime: token.expires_in,
+            AccessTime: moment().toDate(),
+            ExpireTime: moment().add(token.expires_in, 'seconds').toDate(),
             Type: 'wechat',
           });
         }
