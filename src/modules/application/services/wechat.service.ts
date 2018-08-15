@@ -26,12 +26,13 @@ export class WechatService {
         return JSON.parse(tokens[0].Token);
       }
     }, async (token, callback) => {
-        console.log(token);
-        if (token && token.errcode && token.errcode === 0){
+        console.log(token.AccessToken);
+        console.log(token.accessToken);
+        if (token.accessToken) {
           await this.tokenRepository.insert({
-            Token: token.ACCESS_TOKEN,
-            AccessTime: moment().toDate(),
-            ExpireTime: moment().add(token.expires_in, 'seconds').toDate(),
+            Token: token.accessToken,
+            AccessTime: new Date(),
+            ExpireTime: new Date(token.expireTime),
             Type: 'wechat',
           });
         }
