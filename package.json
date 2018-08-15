@@ -24,6 +24,7 @@
     "@nestjs/typeorm": "^5.0.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "co-wechat-api": "^3.7.1",
     "compression": "^1.7.2",
     "connect-pg-simple": "^5.0.0",
     "cookie-parser": "^1.4.3",
@@ -44,8 +45,7 @@
     "rxjs": "^6.0.0",
     "typeorm": "^0.2.7",
     "typescript": "^2.6.2",
-    "wechat": "^2.1.0",
-    "wechat-api": "^1.35.1"
+    "wechat": "^2.1.0"
   },
   "devDependencies": {
     "@nestjs/testing": "^5.0.0",
