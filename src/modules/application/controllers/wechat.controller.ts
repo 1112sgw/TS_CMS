@@ -6,18 +6,16 @@ export class WechatController {
   constructor(private readonly WechatService: WechatService) {}
 
   @Get('/sync')
-  syncFollowers(@Req() req, @Res() res) {
-    this.WechatService.api().getFollowers((err, data, resp) => {
-      return res.json({
-        code: 200,
-        timestamp: new Date().toISOString(),
-        data: {
-          err,
-          data,
-          resp,
-        },
-      });
+  async syncFollowers(@Req() req, @Res() res) {
+    const api = await this.WechatService.api();
+    const result = await api.getFollowers();
+    return res.json({
+      code: 200,
+      timestamp: new Date().toISOString(),
+      data: {
+        err: result.err,
+        data: result.data,
+      },
     });
   }
-
 }
