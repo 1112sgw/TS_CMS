@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository , DeleteResult, UpdateResult, LessThan } from 'typeorm';
+import { Repository, LessThan } from 'typeorm';
 import { Token } from '../entities/token.entity';
 import * as WechatAPI from 'co-wechat-api';
 
