@@ -20,10 +20,12 @@ export class WechatService {
           type: 'wechat',
         },
       });
+      console.log(tokens);
       if (tokens && tokens.length > 0) {
         return JSON.parse(tokens[0].Token);
       }
     }, async (token, callback) => {
+        console.log(token);
         if (token && token.errcode && token.errcode === 0){
           await this.tokenRepository.insert({
             Token: token.ACCESS_TOKEN,
