@@ -21,16 +21,13 @@ export class WechatService {
           type: 'wechat',
         },
       });
-      console.log(tokens);
       if (tokens && tokens.length > 0) {
         return JSON.parse(tokens[0].Token);
       }
     }, async (token, callback) => {
-        console.log(token.AccessToken);
-        console.log(token.accessToken);
         if (token.accessToken) {
           await this.tokenRepository.insert({
-            Token: token.accessToken,
+            Token: JSON.stringify(token),
             AccessTime: new Date(),
             ExpireTime: new Date(token.expireTime),
             Type: 'wechat',

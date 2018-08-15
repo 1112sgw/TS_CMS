@@ -33,22 +33,22 @@ const initWechat = (app) => {
             res.reply('This is a text');
         }
         else if (message.MsgType === 'image') {
-            res.reply('This is a text');
+            res.reply('This is a image');
         }
         else if (message.MsgType === 'voice') {
-            res.reply('This is a text');
+            res.reply('This is a voice');
         }
         else if (message.MsgType === 'video') {
-            res.reply('This is a text');
+            res.reply('This is a video');
         }
         else if (message.MsgType === 'location') {
-            res.reply('This is a text');
+            res.reply('This is a location');
         }
         else if (message.MsgType === 'link') {
-            res.reply('This is a text');
+            res.reply('This is a link');
         }
         else if (message.MsgType === 'shortvideo') {
-            res.reply('This is a text');
+            res.reply('This is a shortvideo');
         }
     }));
 

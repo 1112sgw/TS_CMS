@@ -25,7 +25,7 @@ async function bootstrap() {
   app.use(cookie(process.env.COOKIE_SERCET));
   app.use(session({
     store: new PGSession({
-      conString: process.env.DATABASE_URL,
+      conString: process.env.DATABASE_URL + '?ssl=' + process.env.DATABASE_SSL,
       tableName: 'session',
       schemaName: process.env.DATABASE_SCHEMA_SYS,
     }),

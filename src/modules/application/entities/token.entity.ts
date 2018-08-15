@@ -6,7 +6,7 @@ export class Token {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 120, nullable: false})
+  @Column({ length: 250, nullable: false})
   Token: string;
 
   @Column('timestamp')
