@@ -51,6 +51,15 @@ export default [
           title: '人员管理'
         },
         component: () => import('@/views/pages/user')
+      },
+      {
+        path: 'manage/wechat',
+        name: '微信测试',
+        meta: {
+          icon: 'ios-grid-view',
+          title: '微信测试'
+        },
+        component: () => import('@/views/pages/wechat')
       }
     ]
   }

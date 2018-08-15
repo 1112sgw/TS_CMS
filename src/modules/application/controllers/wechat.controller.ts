@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Patch, Delete, Param, Req, Res, Body, HttpStatus, UseGuards } from '@nestjs/common';
 import { WechatService } from '../services/wechat.service';
+import WechatMsgDto from '../dto/wechatMsg.dto';
 
 @Controller('api/wechat')
 export class WechatController {
@@ -10,10 +11,8 @@ export class WechatController {
     const api = await this.WechatService.api();
     const followers = [];
     const result = await api.getFollowers();
-    if (result.err === 200) {
-      const users = await api.batchGetUsers(result.data.openid);
-      followers.push(users);
-    }
+    const users = await api.batchGetUsers(result.data.openid);
+    followers.push(users);
     return res.json({
       code: 200,
       timestamp: new Date().toISOString(),
@@ -21,8 +20,14 @@ export class WechatController {
     });
   }
 
-  @Get('/push')
-  async pushContent(@Res() res) {
+  @Post('/sendText')
+  async pushContent(@Res() res, @Body() wechatMsgDto: WechatMsgDto) {
     const api = await this.WechatService.api();
+    const result = await api.sendText(wechatMsgDto.openid, wechatMsgDto.text);
+    return res.json({
+      code: 200,
+      timestamp: new Date().toISOString(),
+      result,
+    });
   }
 }
